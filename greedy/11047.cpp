@@ -9,8 +9,8 @@ vector<int> v;
 
 int main()
 {
-	int cnt = 0;
 	int i = 0;
+	int cnt = 0;
 
 	cin >> n >> k;
 	for(i = 0; i<n; i++)
