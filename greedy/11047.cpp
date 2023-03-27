@@ -4,8 +4,8 @@
 using namespace std;
 #define endl '\n'
 
-int n, k;
 vector<int> v;
+int n, k;
 
 int main()
 {
