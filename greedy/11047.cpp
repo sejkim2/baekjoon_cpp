@@ -17,7 +17,7 @@ int main()
 	{
 		int tmp;
 		cin >> tmp;
-		v.push_back(tmp);
+		v.push_back(tmp); 
 	}
 	i--;
 
