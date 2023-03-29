@@ -22,7 +22,7 @@ int main()
     int flag = 0;
     while (i <= str.size())
     {
-        if (str[i] == '-' || str[i] == '+')
+        if (str[i] == '-' || str[i] == '+' || i == str.size())
         {
             if (flag == 1)
                 result -= stoi(num);
@@ -36,9 +36,5 @@ int main()
             num += str[i];
         i++;
     }
-    if (flag == 1)
-        result -= stoi(num);
-    else
-        result += stoi(num);
     cout << result;
 }
