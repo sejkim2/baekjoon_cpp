@@ -11,7 +11,7 @@ bool is_same_color(int row, int col, int depth)
 {
 	char color = table[row][col];
 
-	for(int i = row; i< row + n / depth; i++)
+	for(int i = row; i < row + n / depth; i++)
 	{
 		for(int j = col; j < col + n / depth; j++)
 		{
