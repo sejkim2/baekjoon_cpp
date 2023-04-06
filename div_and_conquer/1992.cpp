@@ -31,6 +31,7 @@ void div_conq(int row, int col, int depth)
 		div_conq(row, col + n / (depth*2), depth*2);
 		div_conq(row + n / (depth*2), col, depth*2);
 		div_conq(row + n / (depth*2), col + n / (depth*2), depth*2);
+		
 		cout << ")";
 	}
 	else
@@ -48,7 +49,7 @@ int main()
     cin.tie(0);
 
 	cin >> n;
-	
+
 	for(int i = 1; i<= n; i++)
 	{
 		for(int j = 1; j<= n; j++)
