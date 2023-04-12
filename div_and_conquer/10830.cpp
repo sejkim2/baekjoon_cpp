@@ -2,7 +2,7 @@
 using namespace std;
 #define endl '\n'
 
-int n, b;
+size_t n, b;
 size_t tmp[6][6];
 size_t a[6][6];
 size_t res[6][6];
@@ -41,7 +41,7 @@ void div_conq_even()
 	for(int i = 1; i<=n; i++)
 	{
 		for(int j = 1; j <= n; j++)
-			res[i][j] = tmp[i][j];
+			a[i][j] = tmp[i][j];
 	}
 }
 
@@ -56,8 +56,9 @@ int main()
 		for(int j = 1; j<= n; j++)
 		{
 			cin >> a[i][j];
-			res[i][j] = 1;
+			// res[i][j] = 1;
 		}
+		res[i][i] = 1;
 	}
 	while (b > 0)
 	{
