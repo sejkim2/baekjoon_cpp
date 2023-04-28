@@ -5,14 +5,16 @@ using namespace std;
 #define endl '\n'
 
 int n, x;
-priority_queue<int> pq;
+priority_queue<int, vector<int>, greater<int> > pq;
 
-int main()
+int main() 
 {
-    ios::sync_with_stdio(false);
-    cin.tie(0);
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
 
 	cin >> n;
+
 	for(int i = 0; i<n; i++)
 	{
 		cin >> x;
