@@ -3,7 +3,7 @@
 using namespace std;
 #define endl '\n'
 
-int n, result;
+int n;
 vector<int> v;
 
 // int lower_bound_func(int Value)
