@@ -11,7 +11,8 @@ struct cmp {
     bool operator()(int n1, int n2)
     {
         if (abs(n1) == abs(n2))
-            return (n1 < n2 ? 0 : 1);
+            return n1 > n2;
+            // return (n1 < n2 ? 0 : 1);
         else return (abs(n1) > abs(n2));
     }
 };
