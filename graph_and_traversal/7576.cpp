@@ -15,7 +15,6 @@ queue<pair<int, int> > q;
 
 void bfs()
 {
-	// vistied[q.front().first][q.front().second] = 1;
 	while (!q.empty())
 	{
 		int r = q.front().first;
