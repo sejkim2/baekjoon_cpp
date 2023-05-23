@@ -62,7 +62,6 @@ int main()
 	for(int i = 0; i<K; i++)
 	{
 		cin >> V >> E;
-		// graph.resize(V + 1);
 		for(int j = 0; j<E; j++)
 		{
 			cin >> u >> v;
@@ -73,8 +72,7 @@ int main()
 		if (check_graph())
 			cout << "YES" << endl;
 		else cout << "NO" << endl;
+		memset(graph, 0, sizeof(graph));
+		memset(visited, 0, sizeof(visited));
 	}
-	memset(graph, 0, sizeof(graph));
-	// graph.clear();
-	memset(visited, 0, sizeof(visited));
 }
