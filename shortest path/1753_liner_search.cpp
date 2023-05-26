@@ -44,6 +44,8 @@ void dijkstra(int Start)
 		{
 			if (Vistied[j] == 0)
 			{
+				//Distance[j] : [start -> j] 기존의 start에서 j까지 가는 최단 경로
+				//Distance[cur] + graph[cur][j] : [start -> cur] + [cur -> j] 경유해서 가는 경로
 				if (Distance[j] > Distance[cur] + graph[cur][j])
 					Distance[j] = Distance[cur] + graph[cur][j];
 			}
