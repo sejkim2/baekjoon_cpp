@@ -23,6 +23,7 @@ int main()
             continue;
         ans = max(ans, ar[i]);        
     }
+    
     ans = max(ans, (ar[6] + ar[9] + 1) / 2);
     cout << ans;
 }
