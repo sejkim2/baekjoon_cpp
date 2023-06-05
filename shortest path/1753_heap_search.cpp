@@ -29,7 +29,8 @@ void dijkstra(int Start)
 		for(int i = 0; i<graph[cur].size(); i++)	//우선순위 큐를 사용하여 벡터의 원소만큼만 순회하므로 visited가 필요 없음(각 노드별로 중복 탐색을 하지 않음)
 		{
 			int search_node = graph[cur][i].first;
-			if (Distance[search_node] > weight + graph[cur][i].second)
+			if (Distance[search_node] > weight + graph[cur][i].second)	//distance : 원래 직접 가는 거리
+			//weight + 해당 노드에서 목적지 노드까지 거리(경유 거리)
 			{
 				Distance[search_node] = weight + graph[cur][i].second;
 				pq.push(make_pair(-Distance[search_node], search_node));
