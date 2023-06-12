@@ -10,5 +10,7 @@
     
   * 삽입 정렬  
   * 퀵 정렬  
-  * 힙 정렬  
+  * 힙 정렬
   * 계수 정렬
+* 보통은 #include <algorithym> 헤더의 sort(container.begin(), container.end()) 함수를 사용하지만 구현 방법은 알아야 한다.  
+* 위치의 변화에 따라 완전 정렬과 불완전 정렬로 나뉜다.
