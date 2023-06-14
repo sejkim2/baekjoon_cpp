@@ -29,6 +29,7 @@ int find_min_weight()
 	return (min_index);
 }
 
+// 매번 현재 노드에서 방문하지 않은 노드 중 가중치가 가장 작은 노드 선택
 void dijkstra(int Start)
 {
 	Vistied[Start] = 1;
