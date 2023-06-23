@@ -10,13 +10,17 @@ int city[101][101];
 
 void floyed_warshall()
 {
+	//필수로 거쳐야 되는 노드 
 	for(int i = 1; i<=n; i++)
 	{
 		for(int j = 1; j<=n; j++)
 		{
 			for(int k = 1; k<=n; k++)
 			{
-				
+				if (j == k)
+					continue;
+				else
+					city[j][k] = min(city[j][k], city[j][i] + city[i][k]);
 			}
 		}
 	}
@@ -42,4 +46,15 @@ int main()
 	}
 	
 	floyed_warshall();
+	for(int i = 1; i<=n; i++)
+	{
+		for(int j = 1; j<=n; j++)
+		{
+			if (city[i][j] == INF)
+				cout << "0" << " ";
+			else
+				cout << city[i][j] << " ";
+		}
+		cout << endl;
+	}
 }
