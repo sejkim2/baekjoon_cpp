@@ -3,10 +3,17 @@
 #define endl '\n'
 using namespace std;
 
+int ar[10001];
+
 int main()
 {
-	int n;
-	cin >> n;
-	for(int i = 1; i<=n; i++)
-		cout << i << endl;
+	int n, x;
+	cin >> n >> x;
+	for(int i = 0; i<n; i++)
+		cin >> ar[i];
+	for(int i = 0; i<n; i++)
+	{
+		if (ar[i] < x)
+			cout << ar[i] << " ";
+	}
 }
