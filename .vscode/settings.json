@@ -65,6 +65,12 @@
 		"vector": "cpp",
 		"__tree": "cpp",
 		"map": "cpp",
-		"set": "cpp"
+		"set": "cpp",
+		"__bits": "cpp",
+		"__verbose_abort": "cpp",
+		"clocale": "cpp",
+		"variant": "cpp",
+		"compare": "cpp",
+		"concepts": "cpp"
 	}
 }

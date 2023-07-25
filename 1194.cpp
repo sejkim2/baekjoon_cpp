@@ -5,45 +5,36 @@ using namespace std;
 
 #include <queue>
 
+struct Data {
+    int row;
+    int col;
+    int key;
+};
 int n, m;
 int move_row[4] = {1, -1, 0, 0};
 int move_col[4] = {0, 0, 1, -1};
 char maze[51][51];
-int keys[6];
-int visited[51][51];
-
-void init_visited()
-{
-    for(int i = 1; i<=n; i++)
-    {
-        for(int j = 1; j<=m; j++)
-            visited[i][j] = 0;
-    }
-}
+int visited[51][51][1<<6];
 
 int bfs(int row, int col)
 {
-    int walk = 0;
-    queue<pair<int, int> > q;
-    q.push(make_pair(row, col));
+    queue<pair<int, Data> > q;   //walk, {row, col, key}
+    Data d;
+    d.row = row;
+    d.col = col;
+    d.key = 0;
+    q.push(make_pair(0, d));
+    visited[row][col][d.key] = 1;
     
     while (!q.empty())
     {
-        int cur_row = q.front().first;
-        int cur_col = q.front().second;
+        int cur_walk = q.front().first;
+        Data cur_d = q.front().second;
+        int cur_row = cur_d.row;
+        int cur_col = cur_d.col;
+        int cur_key = cur_d.key;
         q.pop();
-        char ch = maze[cur_row][cur_col];
-
-        if (ch >= 'a' && ch <= 'f')
-        {
-            keys[ch - 'a'] += 1;
-            init_visited();
-        }
-        else if (ch == '1')
-            return (walk);
-        visited[cur_row][cur_col] = 1;
-        walk++;
-
+        
         for(int i = 0; i<4; i++)
         {
             int next_row = cur_row + move_row[i];
@@ -52,14 +43,50 @@ int bfs(int row, int col)
 
             if (next_row > n || next_row < 1 || next_col > m || next_col < 1)
                 continue;
-            if (next_ch == '#' || visited[next_row][next_col] == 1)
+            
+            if (next_ch == '1')
+                return (cur_walk + 1);
+            else if (next_ch == '#')
                 continue;
-            if (next_ch >= 'A' && next_ch <= 'F')
+            else if (next_ch >= 'A' && next_ch <= 'F')
             {
-                if (keys[ch - 'A'] < 1)
-                    continue;
+                int k = next_ch - 'A';
+                if ((cur_key & (1 << k)) != 0 && !visited[next_row][next_col][cur_key])
+                {
+                    visited[next_row][next_col][cur_key] = 1;
+                    Data tmp;
+                    tmp.row = next_row;
+                    tmp.col = next_col;
+                    tmp.key = cur_key;
+                    q.push(make_pair(cur_walk + 1, tmp));
+                }
             }
-            q.push(make_pair(next_row, next_col));
+            else if (next_ch >= 'a' && next_ch <= 'f')
+            {
+                int k = next_ch - 'a';
+                int next_key = cur_key | (1 << k);
+                if (!visited[next_row][next_col][next_key])
+                {
+                    visited[next_row][next_col][next_key] = 1;
+                    Data tmp;
+                    tmp.row = next_row;
+                    tmp.col = next_col;
+                    tmp.key = next_key;
+                    q.push(make_pair(cur_walk + 1, tmp));
+                }
+            }
+            else    // '.' or '0'
+            {
+                if (!visited[next_row][next_col][cur_key])
+                {
+                    visited[next_row][next_col][cur_key] = 1;
+                    Data tmp;
+                    tmp.row = next_row;
+                    tmp.col = next_col;
+                    tmp.key = cur_key;
+                    q.push(make_pair(cur_walk + 1, tmp));
+                }
+            }
         }
     }
     return (-1);
@@ -68,7 +95,7 @@ int bfs(int row, int col)
 int main()
 {
     int start_row, start_col;
-    int walk = -1;
+    int ans = -1;
     cin >> n >> m;
     for(int i = 1; i<=n; i++)
     {
@@ -85,6 +112,7 @@ int main()
         }
     }
 
-    walk = bfs(start_row, start_col);
-    cout << walk;
+    ans = bfs(start_row, start_col);
+
+    cout << ans;
 }
